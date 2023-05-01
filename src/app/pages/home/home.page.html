@@ -1,0 +1,80 @@
+<div class="page-container">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-title">
+        <h3>Weapon's Creation</h3>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="p-fluid grid">
+        <div class="field col-12">
+          <div class="form-item">
+            <div class="input-container">
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  id="inputtext"
+                  pInputText
+                  [(ngModel)]="weaponFormValue.weapon_id"
+                />
+                <label for="inputtext">Weapon registry name</label>
+              </span>
+            </div>
+            <div class="info-btn-container">
+              <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-info"
+              class="p-button-rounded p-button-text p-button-sm"
+              (click)="infoModals.weapon_id = true"
+            ></button>
+            </div>
+          </div>
+
+        </div>
+        <div class="field col-11">
+          <span class="p-float-label">
+            <p-dropdown
+              inputId="dropdown"
+              [autoDisplayFirst]="false"
+              [options]="weaponTypesOptions"
+              [(ngModel)]="weaponFormValue.type"
+            ></p-dropdown>
+            <label for="dropdown">Weapon Type</label>
+          </span>
+        </div>
+        <div class="col-1">
+          <button
+          pButton
+          pRipple
+          type="button"
+          icon="pi pi-info"
+          class="p-button-rounded p-button-text p-button-sm"
+          (click)="infoModals.type = true"
+        ></button>
+      </div>
+      <div class="col-12">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Weapon's ID explanation" [(visible)]="infoModals.weapon_id">
+  This is the id that minecraft uses to register the item. You can learn how to
+  get it by going <a href="https://github.com/Yesssssman/epicfightmod/wiki/Custom-Weapon-Armor-datapack#making-the-folder-path" target="_blank">here</a>
+
+</p-dialog>
+<p-dialog header="Weapon's type" [(visible)]="infoModals.type"> The type of the weapon that EpicFight will register as. These are the types:
+<ul>
+  <li *ngFor="let item of weaponTypesOptions">
+    {{item}}
+  </li>
+</ul>
+</p-dialog>
+<p-dialog header="Title" [(visible)]="infoModals.attributes">
+  Content
+</p-dialog>
+<p-dialog header="Title" [(visible)]="infoModals.common"> Content </p-dialog>
+<p-dialog header="Title" [(visible)]="infoModals.one_hand"> Content </p-dialog>
